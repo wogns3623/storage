@@ -19,7 +19,8 @@ interface FileUpload {
   mimeType: string
   cacheControl: string
   isTruncated: () => boolean
-  userMetadata?: Record<string, any>
+  userMetadata?: Record<string, any>,
+  contentDisposition?: string
 }
 
 export interface UploadRequest {
@@ -101,7 +102,8 @@ export class Uploader {
         file.body,
         file.mimeType,
         file.cacheControl,
-        request.signal
+        request.signal,
+        file.contentDisposition,
       )
 
       if (file.isTruncated()) {

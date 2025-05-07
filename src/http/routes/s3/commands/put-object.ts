@@ -89,6 +89,7 @@ export default function PutObject(s3Router: S3Router) {
           ContentType: uploadRequest.mimeType,
           Expires: req.Headers?.['expires'] ? new Date(req.Headers?.['expires']) : undefined,
           ContentEncoding: req.Headers?.['content-encoding'],
+          ContentDisposition: req.Headers?.['content-disposition'],
           Metadata: metadata,
         },
         { signal: ctx.signals.body, isTruncated: uploadRequest.isTruncated }

@@ -135,7 +135,8 @@ export class S3Backend implements StorageBackendAdapter {
     body: Readable,
     contentType: string,
     cacheControl: string,
-    signal?: AbortSignal
+    signal?: AbortSignal,
+    contentDisposition?: string
   ): Promise<ObjectMetadata> {
     if (signal?.aborted) {
       throw ERRORS.Aborted('Upload was aborted')
@@ -151,6 +152,7 @@ export class S3Backend implements StorageBackendAdapter {
         Body: dataStream,
         ContentType: contentType,
         CacheControl: cacheControl,
+        ContentDisposition: contentDisposition
       },
     })
 

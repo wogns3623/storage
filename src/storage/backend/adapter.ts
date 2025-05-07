@@ -96,7 +96,8 @@ export abstract class StorageBackendAdapter {
     body: NodeJS.ReadableStream,
     contentType: string,
     cacheControl: string,
-    signal?: AbortSignal
+    signal?: AbortSignal,
+    contentDisposition?: string
   ): Promise<ObjectMetadata> {
     throw new Error('uploadObject not implemented')
   }
